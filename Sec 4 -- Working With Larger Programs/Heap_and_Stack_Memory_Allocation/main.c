@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-double multiplyByTwo (double input){
+double multiplyByTwo (double input)
+{
     double twice = input * 2.0; //this variable will exist in the stack only when the stackframe for the function is popped on
     return twice;
 }

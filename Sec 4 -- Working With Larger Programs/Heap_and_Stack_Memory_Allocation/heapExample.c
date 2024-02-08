@@ -30,4 +30,6 @@ int main(int argc, char *argv[])
     free(myList);
     free(twiceSalary);
 
+    return 0;
+
 }
