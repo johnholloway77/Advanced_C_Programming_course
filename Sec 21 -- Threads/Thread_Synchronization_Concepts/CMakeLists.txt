@@ -1,13 +1,11 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Challenge LANGUAGES C)
+project(Thread_Synchronization_Concepts LANGUAGES C)
 
-add_executable(Challenge main.c)
-
-target_link_libraries(Challenge pthread)
+add_executable(Thread_Synchronization_Concepts main.c)
 
 include(GNUInstallDirs)
-install(TARGETS Challenge
+install(TARGETS Thread_Synchronization_Concepts
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

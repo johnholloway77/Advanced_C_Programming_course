@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Challenge LANGUAGES C)
+project(Deadlock_example LANGUAGES C)
 
-add_executable(Challenge main.c)
+add_executable(Deadlock_example main.c)
+target_link_libraries(Deadlock_example pthread)
 
-target_link_libraries(Challenge pthread)
 
 include(GNUInstallDirs)
-install(TARGETS Challenge
+install(TARGETS Deadlock_example
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

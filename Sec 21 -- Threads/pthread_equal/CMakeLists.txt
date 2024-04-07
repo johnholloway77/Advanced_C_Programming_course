@@ -1,13 +1,11 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Challenge LANGUAGES C)
+project(pthread_equal LANGUAGES C)
 
-add_executable(Challenge main.c)
-
-target_link_libraries(Challenge pthread)
+add_executable(pthread_equal main.c)
 
 include(GNUInstallDirs)
-install(TARGETS Challenge
+install(TARGETS pthread_equal
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

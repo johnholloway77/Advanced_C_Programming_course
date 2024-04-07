@@ -21,7 +21,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
-
+#include <pthread.h>
 
 int score = 0;
 
@@ -35,6 +35,16 @@ void end_game() {
     raise(SIGINT);
 }
 
+ void *countdown(void *ptr){
+     int n = (int) ptr;
+     while (n > 0){
+         printf("\t%d\n", n);
+         n--;
+         sleep(1);
+     }
+
+     pthread_exit(NULL);
+ }
 
 int catch_signal(int sig, void (*handler)(int)){
     struct sigaction action;
@@ -55,6 +65,8 @@ int main() {
     catch_signal(SIGALRM, times_up);
     catch_signal(SIGINT, end_game);
 
+    system("clear");
+
   printf("Challenge 1!\n");
 
   srand(time(NULL));
@@ -62,14 +74,24 @@ int main() {
   while (1) {
     int a = arc4random_uniform(11);
     int b = arc4random_uniform(11);
-    char txt[4];
+    char txt[4] = {'\0'};
+    int timeout = 5;
+    pthread_t pthread;
 
     printf("\nWhat is %d * %d?\n", a, b);
-    printf("You have 5 seconds to answer!\n");
-    alarm(5);
-    printf("Your answer: ");
+    printf("You have %d seconds to answer!\n", timeout);
+
+    pthread_create(&pthread, NULL, &countdown, (void *)timeout);
+
+    alarm(timeout);
+    //printf("Your answer: ");
 
     fgets(txt, 4, stdin);
+    if(txt[0] != '\0'){
+        pthread_cancel(pthread);
+    }
+
+    system("clear");
 
     int answer = atoi(txt);
 

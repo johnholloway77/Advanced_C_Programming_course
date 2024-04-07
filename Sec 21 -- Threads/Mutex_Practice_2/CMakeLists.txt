@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Challenge LANGUAGES C)
+project(Mutex_Practice_2 LANGUAGES C)
 
-add_executable(Challenge main.c)
+add_executable(Mutex_Practice_2 main.c)
 
-target_link_libraries(Challenge pthread)
+target_link_libraries(Mutex_Practice_2 pthread)
 
 include(GNUInstallDirs)
-install(TARGETS Challenge
+install(TARGETS Mutex_Practice_2
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
